@@ -32,7 +32,9 @@ app.post('/tasks', (req, res) => {
   ) {
     res
       .status(400)
-      .send('Task must have a title, description, and completion status.');
+      .send(
+        'Task must have a title, description, completion status and priority.'
+      );
   } else {
     const newTask = tasks.createTask(req.body);
     res.json(newTask);
@@ -43,7 +45,9 @@ app.put('/tasks/:id', (req, res) => {
   if (!req.body.title || !req.body.description || !req.body.completed) {
     res
       .status(400)
-      .send('Task must have a title, description, and completion status.');
+      .send(
+        'Task must have a title, description, completion status and priority.'
+      );
   } else {
     const updatedTask = tasks.updateTask(req.params.id, req.body);
     if (updatedTask) {
